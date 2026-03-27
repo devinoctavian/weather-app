@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Weather Dashboard</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-default">
+
+    <div class="dashboard-container">
+        
+        <!-- Header & Controls -->
+        <header class="glass-panel header fade-in-up" style="animation-delay: 0.1s">
+            <form class="search-container" id="search-form">
+                <i data-lucide="search" class="search-icon"></i>
+                <input type="text" id="city-input" placeholder="Search for a city..." autocomplete="off">
+                <button type="submit" class="search-btn">Search</button>
+            </form>
+
+            <div class="unit-toggle">
+                <button class="unit-btn active" data-unit="C">°C</button>
+                <button class="unit-btn" data-unit="F">°F</button>
+            </div>
+        </header>
+
+        <!-- Loading / Error State -->
+        <div class="glass-panel status-container" id="status-panel">
+            <div class="loader" id="loader"></div>
+            <h3 id="status-text">Fetching weather data...</h3>
+            <div class="error-message" id="error-box" style="display: none;"></div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content-wrapper active" id="main-content">
+            <div class="main-content">
+                
+                <!-- Current Weather Hero -->
+                <div class="glass-panel current-weather fade-in-up" style="animation-delay: 0.2s">
+                    <h1 class="city-name" id="current-city">Loading...</h1>
+                    <p class="date" id="current-date">Day, Date</p>
+                    
+                    <div class="weather-desc">
+                        <img src="" alt="weather icon" class="weather-icon-large" id="current-icon" style="display: none;">
+                        <span id="current-desc">Loading...</span>
+                    </div>
+
+                    <div class="temp-main">
+                        <div id="current-temp">--</div>
+                        <span id="current-unit">°C</span>
+                    </div>
+
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <i data-lucide="droplets"></i>
+                            <div>
+                                <small>Humidity</small><br>
+                                <strong id="current-humidity">--%</strong>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i data-lucide="wind"></i>
+                            <div>
+                                <small>Wind</small><br>
+                                <strong id="current-wind">-- km/h</strong>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i data-lucide="thermometer"></i>
+                            <div>
+                                <small>Feels Like</small><br>
+                                <strong id="current-feels">--°C</strong>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i data-lucide="eye"></i>
+                            <div>
+                                <small>Visibility</small><br>
+                                <strong id="current-vis">-- km</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5-Day Forecast -->
+                <div class="glass-panel forecast-container fade-in-up" style="animation-delay: 0.3s">
+                    <h2 class="section-title">5-Day Forecast</h2>
+                    
+                    <div class="forecast-grid" id="forecast-grid">
+                        <!-- Forecast items injected via JS -->
+                    </div>
+
+                    <!-- Expandable Day Detail -->
+                    <div class="day-detail" id="day-detail-panel">
+                        <div class="day-detail-header">
+                            <h3 id="detail-date">Detailed Forecast</h3>
+                            <button class="close-detail" id="close-detail-btn"><i data-lucide="x"></i></button>
+                        </div>
+                        <p style="margin-bottom: 15px; font-style: italic;" id="detail-desc">Mostly clear</p>
+                        
+                        <div class="day-detail-grid">
+                            <div class="detail-item">
+                                <i data-lucide="thermometer-sun"></i>
+                                <span>High: <strong id="detail-max">--</strong></span>
+                            </div>
+                            <div class="detail-item">
+                                <i data-lucide="thermometer-snowflake"></i>
+                                <span>Low: <strong id="detail-min">--</strong></span>
+                            </div>
+                            <div class="detail-item">
+                                <i data-lucide="droplets"></i>
+                                <span>Humidity: <strong id="detail-humidity">--%</strong></span>
+                            </div>
+                            <div class="detail-item">
+                                <i data-lucide="wind"></i>
+                                <span>Wind: <strong id="detail-wind">-- km/h</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
