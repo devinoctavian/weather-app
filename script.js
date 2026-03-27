@@ -4,7 +4,7 @@ lucide.createIcons();
 // Constants & Configuration
 const API_KEY = '90d6efb4feb8d66347f941d8ed26688a';
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
-const DEFAULT_CITY = 'London,uk'; // Default fallback
+const DEFAULT_CITY = 'Bandung,id'; // Default fallback
 
 // State Management
 let currentUnit = 'C'; // 'C' or 'F'
